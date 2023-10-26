@@ -19,13 +19,13 @@ avec $f$ définie sur $\mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}$.
 La fonction $f(t, y(t))$ est continue et Lipschitzienne en $y$, c'est à dire
 
 $$
-\forall t,y_1,y_2, \exists k > 0, \qquad |f(t,y_1) - f(t,y_2)| \leq k|y_1-y_2|
+\forall t \exists k > 0 \forall y_1,y_2, \qquad |f(t,y_1) - f(t,y_2)| \leq k|y_1-y_2|
 $$
 
 Soit $h > 0$ le pas d'intégration, la méthode d'Euler explicite s'exprime récursivement:
 
 $$
-\widetilde{y}_{n+1} = \widetilde{y}_n + hf(t_n, \widetilde{y}_n) \qquad t_n = nh
+\widetilde{y}_{n+1} = \widetilde{y}_n + hf(t_n, \widetilde{y}_n) \qquad t_n = t_0 + nh
 $$
 
 On s'intéresse à l'erreur locale à l'étape $n+1$,
@@ -62,7 +62,7 @@ $$
 
 Dans cette partie nous souhaitons simuler le réchauffement climatique par un modèle simple de l'effet de serre.
 
-Le modèle utilisé est une simplification du modèle utilisé dans les logiciel [SimClimat](https://www.lmd.jussieu.fr/~crlmd/simclimat/) développé par Camille Risi et [py-simclimat](https://gitlab.in2p3.fr/alexis.tantet/py-simclimat) développé par Alexis Tantet.
+Le modèle utilisé est une simplification du modèle utilisé dans les logiciels [SimClimat](https://www.lmd.jussieu.fr/~crlmd/simclimat/) développé par Camille Risi et [py-simclimat](https://gitlab.in2p3.fr/alexis.tantet/py-simclimat) développé par Alexis Tantet.
 
 ### Description du modèle
 
@@ -129,7 +129,7 @@ La constante 100 modélise l'inertie de changement de température.
 
 Nous souhaitons prédire l'évolution de la température avec le modèle précédent.
 
-1. Montrer que le modèle peut-être intégré sur le temps avec la méthode d'Euler explicite. Écrivez la formule permettant de calculer la température $\widetilde{T}_{n+1}$ à partir de $\widetilde{T}_{n}$.
+1. Montrer que le modèle peut-être intégré sur le temps avec la méthode d'Euler explicite (on admettra que la fonction est lipschitzienne). Écrivez la formule permettant de calculer la température $\widetilde{T}_{n+1}$ à partir de $\widetilde{T}_{n}$.
 
 
 2. Rajouter une fonction `real euler(real t_final, int steps)`. La fonction utilisera un schéma d'Euler explicite pour simuler la température à $t_0+t_{final}$; on choisira le pas d'intégration de manière à effectuer $steps$ itérations avec la formule $h = \frac{t_{final} - t_{0}}{steps}$.
@@ -166,7 +166,7 @@ Dans cette partie nous allons comparer notre modèle simple avec les projections
 
 Pour cette partie on va garder la concentration en dioxyde de carbone fixe à sa valeur initiale en 2007.
 
-1. Simuler la température en 2107 avec un 1000 itérations et affichez l'ensemble des chiffres du résultat en double précision. Garder la valeur obtenue qui sera utilisée comme référence pour la suite.
+1. Simuler la température en 2107 avec 5000 itérations et affichez l'ensemble des chiffres du résultat en double précision. Garder la valeur obtenue qui sera utilisée comme référence pour la suite.
 
 2. Changer la définition de `real` de manière à utiliser la simple précision lors des calculs.
 
